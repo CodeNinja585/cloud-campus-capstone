@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://kunalmishra25.github.io/Cloud-Campus-React/",
+  "homepage": "https://kunalmishra25.github.io/Cloud-Campus-React/-",
 
   "scripts": {
     "dev": "vite",
