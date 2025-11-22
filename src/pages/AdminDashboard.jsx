@@ -1,10 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./AdminDashboard.css";
+import "./AdminDashboard.css";          
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
-
   return (
     <div className="admin-dashboard">
       <div className="dashboard-header">
@@ -40,7 +39,6 @@ const AdminDashboard = () => {
             <p>Add, edit, or remove student records and manage enrollments</p>
             <button className="access-btn">Access</button>
           </div>
-          
           <div className="action-card" onClick={() => navigate("/faculty")}>
             <div className="card-icon faculty-icon">
               <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
