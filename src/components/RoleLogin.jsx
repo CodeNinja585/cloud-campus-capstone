@@ -9,16 +9,16 @@ const RoleLogin = () => {
   const [password, setPassword] = useState("");
   const [notification, setNotification] = useState({ show: false, message: "", type: "" });
 
-  // Add default admin account on component mount
+  // 1️⃣ Add default admin account on component mount
   useEffect(() => {
     const users = JSON.parse(localStorage.getItem("users") || "[]");
-    
-    // Check if admin account already exists
-    const adminExists = users.some(user => 
-      user.email === "kunal1361.becse24@chitkara.edu.in" && user.role === "Admin"
+
+    const adminExists = users.some(
+      user =>
+        user.email === "kunal1361.becse24@chitkara.edu.in" &&
+        user.role === "Admin"
     );
-    
-    // If admin doesn't exist, add it
+
     if (!adminExists) {
       const adminUser = {
         role: "Admin",
@@ -26,7 +26,7 @@ const RoleLogin = () => {
         email: "kunal1361.becse24@chitkara.edu.in",
         password: "Kunal@7800"
       };
-      
+
       users.push(adminUser);
       localStorage.setItem("users", JSON.stringify(users));
     }

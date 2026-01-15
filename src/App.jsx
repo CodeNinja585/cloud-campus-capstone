@@ -74,6 +74,13 @@ const ProtectedRoute = ({ allowedRoles }) => {
 };
 
 function App() {
+  useEffect(() => {
+    fetch("http://localhost:5000/students")
+      .then(res => res.json())
+      .then(data => console.log("Students from backend:", data))
+      .catch(err => console.error("Backend error:", err));
+  }, []);
+
   return (
     <Router>
       <ScrollToTop />
@@ -85,8 +92,8 @@ function App() {
         {/* All pages with consistent layout */}
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/login" />} />
-          
-          {/* Admin Routes - Only accessible by Admin */}
+
+          {/* Admin Routes */}
           <Route element={<ProtectedRoute allowedRoles={["Admin"]} />}>
             <Route path="admin/dashboard" element={<AdminDashboard />} />
             <Route path="students" element={<ManageStudents />} />
@@ -97,8 +104,8 @@ function App() {
             <Route path="analytics" element={<Analytics />} />
             <Route path="reports" element={<Reports />} />
           </Route>
-          
-          {/* Student Routes - Only accessible by Student */}
+
+          {/* Student Routes */}
           <Route element={<ProtectedRoute allowedRoles={["Student"]} />}>
             <Route path="student/dashboard" element={<StudentDashboard />} />
             <Route path="student/announcements" element={<StudentAnnouncement />} />
@@ -109,8 +116,8 @@ function App() {
             <Route path="student/courses" element={<StudentCourses />} />
             <Route path="student/profile" element={<StudentProfile />} />
           </Route>
-          
-          {/* Faculty Routes - Only accessible by Faculty */}
+
+          {/* Faculty Routes */}
           <Route element={<ProtectedRoute allowedRoles={["Faculty"]} />}>
             <Route path="faculty/dashboard" element={<FacultyDashboard />} />
             <Route path="faculty/announcements" element={<FacultyAnnouncement />} />
@@ -120,12 +127,12 @@ function App() {
             <Route path="faculty/grades" element={<FacultyGrades />} />
             <Route path="faculty/resources" element={<FacultyResources />} />
           </Route>
-          
-          {/* Footer pages - Accessible by all */}
+
+          {/* Footer pages */}
           <Route path="technical-support" element={<TechnicalSupport />} />
           <Route path="privacy-policy" element={<PrivacyPolicy />} />
           <Route path="terms-of-service" element={<TermsOfService />} />
-          
+
           <Route path="*" element={<Navigate to="/login" />} />
         </Route>
       </Routes>
