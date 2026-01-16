@@ -75,7 +75,7 @@ const ProtectedRoute = ({ allowedRoles }) => {
 
 function App() {
   useEffect(() => {
-    fetch("http://localhost:5000/students")
+    fetch("/api/students")
       .then(res => res.json())
       .then(data => console.log("Students from backend:", data))
       .catch(err => console.error("Backend error:", err));
